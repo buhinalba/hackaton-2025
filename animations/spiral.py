@@ -88,21 +88,22 @@ def rotating_spiral(percentage, time, variant):
 
 
 def background(time):
-    variant = 40 + min(bands['bass'] * 30, 100)  # smooth range
+    variant = 40 # smooth range
     print(variant)
     some_meaningful_number=30*variant
     rgb_code = (
-        (some_meaningful_number + int(abs(30 * sin(0.05 * time))))%255,
-        (some_meaningful_number + int(abs(30 * sin(0.05 * time))))%255,
-        (some_meaningful_number + int(abs(30 * sin(0.05 * time))))%255
+        (int(abs(30 * sin(0.05 * time))))%255,
+        (int(abs(30 * sin(0.05 * time))))%255,
+        (int(abs(30 * sin(0.05 * time))))%255
     )
     return rgb_code
 
 def fg(time):
+    variant = 40 + min(bands['mid'] * 30, 100)  # smooth range
     return (
-        255 - int(abs(15 * sin(0.1 * time))),
-        85 + int(abs(160 * sin(0.1 * time))),
-        85 + int(abs(60 * sin(0.1 * time))),
+        255 - int(abs(15 * variant * sin(0.1 * time)))%255,
+        85 + int(abs(160 * variant * sin(0.1 * time)))%170,
+        85 + int(abs(60 * variant * sin(0.1 * time)))%170,
     )
 
 def animate():
